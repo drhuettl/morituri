@@ -314,7 +314,7 @@ class Program(log.Loggable):
 
         return None
 
-    def getMusicBrainz(self, ittoc, mbdiscid, release=None, prompt=False):
+    def getMusicBrainz(self, ittoc, mbdiscid, release=None, country=None, prompt=False):
         """
         @type  ittoc: L{morituri.image.table.Table}
         """
@@ -332,6 +332,7 @@ class Program(log.Loggable):
         for _ in range(0, 4):
             try:
                 metadatas = mbngs.musicbrainz(mbdiscid,
+                    country=country,
                     record=self._record)
             except mbngs.NotFoundException, e:
                 break
